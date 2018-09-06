@@ -8,7 +8,7 @@ cache:
 
 before_script:
 # Install git and unzip (composer will need them)
-- apt-get update && apt-get install zlib-dev -qqy git unzip && docker-php-ext-install zip
+- apt-get update && apt-get install libzip-dev -qqy git unzip && docker-php-ext-install zip
 # Install composer
 - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Install all project dependencies
