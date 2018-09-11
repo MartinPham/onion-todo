@@ -42,14 +42,11 @@ class Task
 	/**
 	 * Task constructor
 	 *
-	 * @param Id $id
-	 * @param Name $name
-	 *
+	 * 
 	 */
-	public function __construct(Id $id, Name $name)
+	private function __construct()
 	{
-		$this->id = $id;
-		$this->name = $name;
+		$this->id = new Id();
 	}
 
 	/**
@@ -72,6 +69,24 @@ class Task
 		return $this->name;
 	}
 
-	
+	/**
+	 * Set Name
+	 *
+	 * @param Name $name Name
+	 *
+	 * @return void
+	 */
+	public function setName(Name $name)
+	{
+		$this->name = $name;
+	}
 
+	
+	public static function constructFromName(Name $name)
+	{
+		$task = new self();
+		$task->setName($name);
+		
+		return $task;
+	}
 }

@@ -13,7 +13,8 @@ $taskRepository = new TaskRepository();
 
 $addTask = new AddTask($taskRepository);
 
-$addTask->addTaskWithName('hey');
+//$addTask->addTaskWithName('');
+//$addTask->addTaskWithName('fuck');
 $addTask->addTaskWithName('hooo');
 $addTask->addTaskWithName('omggg');
 $addTask->addTaskWithName('oh my porco zio god');

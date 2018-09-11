@@ -18,6 +18,7 @@ use Todo\Domain\Exception\Task\InvalidNameException;
 use Todo\Domain\Service\Repository\TaskRepositoryInterface;
 use Todo\Domain\Task\Service\Factory\FromName;
 use Todo\Domain\Task\Service\Repository;
+use Todo\Domain\Task\ValueObject\Name;
 use TypeError;
 
 /**
@@ -50,12 +51,17 @@ class AddTask
 		$this->taskRepository = $taskRepository;
 	}
 
-
+	/**
+	 * AddTaskWithName
+	 * @param string $name
+	 * @return void
+	 * @throws \Todo\Domain\Task\Exception\InvalidTaskName
+	 */
 	public function addTaskWithName(string $name)
 	{
-		$fromNameTaskFactory = new FromName($this->taskRepository);
+		$nameObject = new Name($name);
 		
-		$task = $fromNameTaskFactory->build($name);
+		$task = \Todo\Domain\Task::constructFromName($nameObject);
 		
 		$this->taskRepository->save($task);
 	}
