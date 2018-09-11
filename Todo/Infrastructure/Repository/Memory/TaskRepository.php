@@ -70,6 +70,25 @@ class TaskRepository implements Task\Service\Repository
 
 	public function save(Task $task)
 	{
+		$taskNameIsAlreadyUsed = false;
+		
+		try {
+			$existedTaskWithSameName = $this->findByName($task->getName()->getName());
+			
+			if($existedTaskWithSameName->getId() !== $task->getId())
+			{
+				$taskNameIsAlreadyUsed = true;
+			}
+		} catch (Task\Exception\TaskNotFound $exception)
+		{
+			
+		}
+		
+		if($taskNameIsAlreadyUsed)
+		{
+			throw new Task\Exception\DuplicatedTaskName("Task name " . $task->getName()->getName() . " is already used");
+		}
+		
 		$GLOBALS['tasks'][] = $task;
 	}
 

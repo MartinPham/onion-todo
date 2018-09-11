@@ -45,6 +45,7 @@ interface Repository
 	 * Save
 	 * @param Task $task
 	 * @return mixed
+	 * @throws Task\Exception\DuplicatedTaskName
 	 */
 	public function save(Task $task);
 }

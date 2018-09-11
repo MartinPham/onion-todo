@@ -17,7 +17,7 @@ $addTask = new AddTask($taskRepository);
 //$addTask->addTaskWithName('fuck');
 $addTask->addTaskWithName('hooo');
 $addTask->addTaskWithName('omggg');
-$addTask->addTaskWithName('oh my porco zio god');
+$addTask->addTaskWithName('hooo');
 
 var_dump($GLOBALS['tasks']);
 
