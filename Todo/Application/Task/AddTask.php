@@ -16,6 +16,8 @@ use Todo\Application\Exception\ImpoliteNameException;
 use Todo\Domain\Entity\Task;
 use Todo\Domain\Exception\Task\InvalidNameException;
 use Todo\Domain\Service\Repository\TaskRepositoryInterface;
+use Todo\Domain\Task\Service\Factory\FromName;
+use Todo\Domain\Task\Service\Repository;
 use TypeError;
 
 /**
@@ -32,52 +34,30 @@ class AddTask
 	/**
 	 * TaskRepository
 	 *
-	 * @var TaskRepositoryInterface
+	 * @var Repository
 	 */
 	private $taskRepository;
+
 
 	/**
 	 * AddTask constructor
 	 *
-	 * @param TaskRepositoryInterface $taskRepository
+	 * @param Repository $taskRepository
 	 *
 	 */
-	public function __construct(TaskRepositoryInterface $taskRepository)
+	public function __construct(Repository $taskRepository)
 	{
 		$this->taskRepository = $taskRepository;
 	}
 
 
-	/**
-	 * AddTaskWithName
-	 * @param string $name
-	 * @throws ImpoliteNameException
-	 * @throws TypeError
-	 * @throws InvalidNameException
-	 * @return void
-	 */
 	public function addTaskWithName(string $name)
 	{
-		$this->validateTaskName($name);
+		$fromNameTaskFactory = new FromName($this->taskRepository);
 		
-		$task = Task::createWithName($name);
+		$task = $fromNameTaskFactory->build($name);
 		
 		$this->taskRepository->save($task);
 	}
 
-	/**
-	 * ValidateTaskName
-	 * @param string $name
-	 * @return void
-	 */
-	private function validateTaskName(string $name)
-	{
-		if(
-			strpos(strtolower($name), "fuck")
-		)
-		{
-			throw new ImpoliteNameException("soo impolite language");
-		}
-	}
-	
 }

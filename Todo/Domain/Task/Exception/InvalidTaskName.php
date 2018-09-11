@@ -1,6 +1,6 @@
 <?php
 /**
- * File: ImpoliteNameException.php - todo
+ * File: InvalidTaskName.php - todo
  *
  * @category None
  * @package  Todo
@@ -9,18 +9,18 @@
  * @link     None
  */
 
-namespace Todo\Application\Exception;
+namespace Todo\Domain\Task\Exception;
 
 /**
- * Class ImpoliteNameException
+ * Class InvalidTaskName
  *
  * @category None
- * @package  Todo\Application\Exception
+ * @package  Todo\Domain\Task\Exception
  * @author   Martin Pham <i@martinpham.com>
  * @license  None http://
  * @link     None
  */
-class ImpoliteNameException extends \RuntimeException
+class InvalidTaskName extends \Exception
 {
 
 }

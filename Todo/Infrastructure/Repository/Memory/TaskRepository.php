@@ -11,8 +11,8 @@
 
 namespace Todo\Infrastructure\Repository\Memory;
 
-use Todo\Domain\Entity\Task;
-use Todo\Domain\Service\Repository\TaskRepositoryInterface;
+
+use Todo\Domain\Task;
 
 /**
  * Class TaskRepository
@@ -23,7 +23,7 @@ use Todo\Domain\Service\Repository\TaskRepositoryInterface;
  * @license  None http://
  * @link     None
  */
-class TaskRepository implements TaskRepositoryInterface
+class TaskRepository implements Task\Service\Repository
 {
 
 	/**
@@ -33,11 +33,38 @@ class TaskRepository implements TaskRepositoryInterface
 	 */
 	public function __construct()
 	{
+		if(!isset($GLOBALS['tasks']))
+		{
+			$GLOBALS['tasks'] = [];
+		}
 	}
 
-	public function findAll(): array
+	public function find($id): Task
 	{
-		return $GLOBALS['tasks'] ?? [];
+		/** @var Task $task */
+		foreach($GLOBALS['tasks'] as $task)
+		{
+			if($task->getId()->getId() === $id)
+			{
+				return $task;
+			}
+		}
+		
+		throw new Task\Exception\TaskNotFound("");
+	}
+
+	public function findByName($name): Task
+	{
+		/** @var Task $task */
+		foreach($GLOBALS['tasks'] as $task)
+		{
+			if($task->getName()->getName() === $name)
+			{
+				return $task;
+			}
+		}
+
+		throw new Task\Exception\TaskNotFound("");
 	}
 
 
