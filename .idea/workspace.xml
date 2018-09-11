@@ -38,25 +38,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="failed" value="1" />
-          <entry key="php" value="62" />
+          <entry key="php" value="63" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PHP" value="62" />
+          <entry key="PHP" value="63" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="4223" />
+          <entry key="php" value="4226" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PHP" value="4223" />
+          <entry key="PHP" value="4226" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.test">
@@ -97,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/Service/Validation/NameIsPolite.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+            <state relative-caret-position="489">
+              <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
               <folding>
                 <element signature="e#223#247#0#PHP" expanded="true" />
               </folding>
@@ -121,10 +121,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/Service/Factory/FromName.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
+            <state relative-caret-position="319">
+              <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
               <folding>
                 <element signature="e#216#237#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Todo/Domain/Task.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="48" column="10" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="10" />
+              <folding>
+                <element signature="e#191#227#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/ValueObject/Name.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+            <state relative-caret-position="501">
+              <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
               <folding>
                 <element signature="e#208#255#0#PHP" expanded="true" />
               </folding>
@@ -142,11 +154,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pure/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+            <state relative-caret-position="515">
+              <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
               <folding>
                 <element signature="e#7#41#0#PHP" expanded="true" />
               </folding>
@@ -201,7 +213,6 @@
         <option value="$PROJECT_DIR$/Todo/Domain/Task/Service/Validation/Specification/NameSpecification.php" />
         <option value="$PROJECT_DIR$/Todo/Domain/Task/Service/Validation/NameIsNonEmptyString.php" />
         <option value="$PROJECT_DIR$/Todo/Domain/Task/Service/Factory/BuildFromName.php" />
-        <option value="$PROJECT_DIR$/Todo/Domain/Task.php" />
         <option value="$PROJECT_DIR$/Todo/Domain/Task/Service/Hydration.php" />
         <option value="$PROJECT_DIR$/Todo/Infrastructure/Repository/Memory/TaskRepository.php" />
         <option value="$PROJECT_DIR$/Todo/Domain/Task/Service/Repository.php" />
@@ -212,6 +223,7 @@
         <option value="$PROJECT_DIR$/tests/unit/Todo/Application/Task/AddTaskTest.php" />
         <option value="$PROJECT_DIR$/Todo/Domain/Task/Service/Validation/NameIsPolite.php" />
         <option value="$PROJECT_DIR$/pure/index.php" />
+        <option value="$PROJECT_DIR$/Todo/Domain/Task.php" />
       </list>
     </option>
   </component>
@@ -533,7 +545,7 @@
     <frame x="164" y="54" width="1742" height="1146" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29895106" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29895106" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -544,7 +556,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3294686" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3294686" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -703,32 +715,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Todo/Domain/Task.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="806">
-          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-          <folding>
-            <element signature="e#191#227#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/Service/Hydration.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="728">
           <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
           <folding>
             <element signature="e#209#245#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/Service/Factory/FromName.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="60" column="35" selection-start-line="60" selection-start-column="35" selection-end-line="60" selection-end-column="35" />
-          <folding>
-            <element signature="e#216#237#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -790,10 +782,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pure/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+          <folding>
+            <element signature="e#7#41#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/ValueObject/Name.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+        <state relative-caret-position="501">
+          <caret line="57" column="5" lean-forward="true" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
           <folding>
             <element signature="e#208#255#0#PHP" expanded="true" />
           </folding>
@@ -802,20 +804,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/Service/Validation/NameIsPolite.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        <state relative-caret-position="489">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
           <folding>
             <element signature="e#223#247#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pure/index.php">
+    <entry file="file://$PROJECT_DIR$/Todo/Domain/Task/Service/Factory/FromName.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+        <state relative-caret-position="319">
+          <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
           <folding>
-            <element signature="e#7#41#0#PHP" expanded="true" />
+            <element signature="e#216#237#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todo/Domain/Task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="10" />
+          <folding>
+            <element signature="e#191#227#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
