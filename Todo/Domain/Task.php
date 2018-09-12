@@ -107,4 +107,12 @@ class Task
 		
 		return $task;
 	}
+
+	public function equals(Task $task)
+	{
+		return (
+			$this->getId()->equals($task->getId())
+			&& $this->getName()->equals($task->getName())
+		);
+	}
 }

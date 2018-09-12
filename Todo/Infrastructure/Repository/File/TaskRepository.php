@@ -66,7 +66,7 @@ class TaskRepository implements Repository
 	public function find(Task\ValueObject\Id $id): Task
 	{
 		/** @var Task $task */
-		foreach($this->data as $task)
+		foreach($this->data as &$task)
 		{
 			if($task->getId()->equals($id))
 			{
@@ -80,7 +80,7 @@ class TaskRepository implements Repository
 	public function findByName(Task\ValueObject\Name $name): Task
 	{
 		/** @var Task $task */
-		foreach($this->data as $task)
+		foreach($this->data as &$task)
 		{
 			if($task->getName()->equals($name))
 			{
@@ -94,12 +94,22 @@ class TaskRepository implements Repository
 
 	public function save(Task $task)
 	{
+		$matchedTask = null;
+
+		try {
+			$matchedTask = $this->find($task->getId());
+		} catch (Task\Exception\TaskNotFoundException $exception)
+		{
+
+		}
+		
+		
 		$taskNameIsAlreadyUsed = false;
 
 		try {
 			$existedTaskWithSameName = $this->findByName($task->getName());
 
-			if($existedTaskWithSameName->getId() !== $task->getId())
+			if(!$existedTaskWithSameName->equals($task))
 			{
 				$taskNameIsAlreadyUsed = true;
 			}
@@ -113,7 +123,13 @@ class TaskRepository implements Repository
 			throw new Task\Exception\DuplicateTaskException("Task name " . $task->getName() . " is already used");
 		}
 
-		$this->data[] = $task;
+		if($matchedTask !== null)
+		{
+			$matchedTask->setName($task->getName());
+		} else {
+			$this->data[] = $task;
+		}
+		
 		
 		$jsonData = [];
 		foreach($this->data as $task)
