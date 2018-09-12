@@ -20,3 +20,4 @@ before_script:
 test:
   script:
   - vendor/bin/codecept run
+  - vendor/bin/phpstan analyse --level 7 Todo

@@ -1,6 +1,6 @@
 <?php
 /**
- * File: AddTask.php - todo
+ * File: Editor.phpphp - todo
  *
  * @category None
  * @package  Todo
@@ -12,18 +12,17 @@
 namespace Todo\Application\Task;
 
 use function strtolower;
-use Todo\Application\Exception\ImpoliteNameException;
-use Todo\Domain\Entity\Task;
-use Todo\Domain\Exception\Task\InvalidNameException;
-use Todo\Domain\Service\Repository\TaskRepositoryInterface;
+use Todo\Application\Task\DataTransferObject\TaskData;
+use Todo\Domain\Task;
 use Todo\Domain\Task\Exception\DuplicateTaskException;
-use Todo\Domain\Task\Service\Factory\FromName;
 use Todo\Domain\Task\Service\Repository;
+use Todo\Domain\Task\ValueObject\Id;
 use Todo\Domain\Task\ValueObject\Name;
 use TypeError;
+use function var_dump;
 
 /**
- * Class AddTask
+ * Class Editor
  *
  * @category None
  * @package  Todo\Application\Task
@@ -31,7 +30,7 @@ use TypeError;
  * @license  None http://
  * @link     None
  */
-class AddTask
+class Editor
 {
 	/**
 	 * TaskRepository
@@ -42,7 +41,7 @@ class AddTask
 
 
 	/**
-	 * AddTask constructor
+	 * Editor constructor
 	 *
 	 * @param Repository $taskRepository
 	 *
@@ -53,13 +52,13 @@ class AddTask
 	}
 
 	/**
-	 * AddTaskWithName
+	 * CreateTaskWithName
 	 * @param string $name
-	 * @return void
-	 * @throws \Todo\Domain\Task\Exception\InvalidNameException
+	 * @return Task
 	 * @throws DuplicateTaskException
+	 * @throws \Todo\Domain\Task\Exception\InvalidNameException
 	 */
-	public function addTaskWithName(string $name)
+	public function createTaskWithName(string $name)
 	{
 		$nameObject = new Name($name);
 		
@@ -67,6 +66,29 @@ class AddTask
 		
 		
 		$this->taskRepository->save($task);
+		
+		return $task;
+	}
+
+	/**
+	 * UpdateTaskWithData
+	 * @param Id $id
+	 * @param TaskData $taskData
+	 * @return Task
+	 * @throws DuplicateTaskException
+	 * @throws \Todo\Domain\Task\Exception\InvalidNameException
+	 * @throws \Todo\Domain\Task\Exception\TaskNotFoundException
+	 */
+	public function updateTaskWithData(Id $id, TaskData $taskData)
+	{
+		$task = $this->taskRepository->find($id);
+		
+		$nameObject = new Name($taskData->getName());
+		$task->setName($nameObject);
+		
+		$this->taskRepository->save($task);
+		
+		return $task;
 	}
 
 }

@@ -13,6 +13,7 @@ namespace Todo\Domain\Task\Service;
 
 use Todo\Domain\Task;
 use Todo\Domain\Task\ValueObject\Id;
+use Todo\Domain\Task\ValueObject\Name;
 
 /**
  * Interface Repository
@@ -27,7 +28,7 @@ interface Repository
 {
 	/**
 	 * Find
-	 * @param $id
+	 * @param Id $id
 	 * @return Task
 	 * @throws Task\Exception\TaskNotFoundException
 	 */
@@ -35,12 +36,18 @@ interface Repository
 
 	/**
 	 * FindByName
-	 * @param $name
+	 * @param Name $name
 	 * @return Task
 	 * @throws Task\Exception\TaskNotFoundException
 	 */
-	public function findByName(Task\ValueObject\Name $name): Task;
+	public function findByName(Name $name): Task;
 
+	/**
+	 * FindAll
+	 * @return Task[]
+	 */
+	public function findAll(): array;
+	
 	/**
 	 * Save
 	 * @param Task $task
@@ -48,4 +55,12 @@ interface Repository
 	 * @throws Task\Exception\DuplicateTaskException
 	 */
 	public function save(Task $task);
+
+	/**
+	 * Remove
+	 * @param Task $task
+	 * @return mixed
+	 * @throws Task\Exception\TaskNotFoundException
+	 */
+	public function remove(Task $task);
 }

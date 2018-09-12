@@ -72,7 +72,7 @@ final class Versions
   'symfony/yaml' => 'v4.1.4@b832cc289608b6d305f62149df91529a2ab3c314',
   'theseer/tokenizer' => '1.1.0@cb2f008f3f05af2893a87208fe6a6c4985483f8b',
   'webmozart/assert' => '1.3.0@0df1908962e7a3071564e857d86874dad1ef204a',
-  'zzz/todo' => 'No version set (parsed as 1.0.0)@',
+  'zzz/todo' => 'dev-master@50a42abe13e5c35177ec8a578be0aec599f7eac5',
 );
 
     private function __construct()

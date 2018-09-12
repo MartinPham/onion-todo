@@ -51,7 +51,8 @@ class TaskRepository implements Repository
 			file_put_contents(__DIR__ . '/task.json', json_encode([]));
 		}
 
-		$jsonData = json_decode(file_get_contents(__DIR__ . '/task.json'));
+		$data = (string)file_get_contents(__DIR__ . '/task.json');
+		$jsonData = json_decode($data);
 		
 		$this->data = [];
 		foreach($jsonData as $taskJsonData)
@@ -89,6 +90,11 @@ class TaskRepository implements Repository
 		}
 
 		throw new Task\Exception\TaskNotFoundException("");
+	}
+
+	public function findAll(): array
+	{
+		return $this->data;
 	}
 
 
@@ -142,5 +148,20 @@ class TaskRepository implements Repository
 		
 		file_put_contents(__DIR__ . '/task.json', json_encode($jsonData));
 	}
+
+	public function remove(Task $task)
+	{
+		foreach($this->data as $taskKey => $taskItem)
+		{
+			if($taskItem->equals($task))
+			{
+				array_splice($this->data, $taskKey, 1);
+				return;
+			}
+		}
+		
+		throw new Task\Exception\TaskNotFoundException("Task not found");
+	}
+
 
 }
