@@ -3,6 +3,7 @@
 use Todo\Application\Task\Browser;
 use Todo\Application\Task\Editor;
 //use Todo\Infrastructure\Repository\Memory\TaskRepository;
+use Todo\Application\Task\Remover;
 use Todo\Domain\Task;
 use Todo\Infrastructure\Repository\File\TaskRepository;
 
@@ -13,27 +14,19 @@ $taskRepository = new TaskRepository();
 
 $taskEditor = new Editor($taskRepository);
 
-//$addTask->addTaskWithName('');
-$taskEditor->createTaskWithName('fuczk z');
-//$addTask->addTaskWithName('hooozk');
-//$addTask->addTaskWithName('omggg');
-//$addTask->addTaskWithName('hooo');
+//$taskEditor->createTaskWithName('t1');
+//$taskEditor->createTaskWithName('t2');
+//$taskEditor->createTaskWithName('t3');
 
-//$task = Task::fromData(
-//	new Task\ValueObject\Name("hooozkaaa"),
-//	new Task\ValueObject\Id("task_5b98f476315cc")
-//);
-//
-//$taskRepository->save($task);
+
+$taskRemover = new Remover($taskRepository);
+$taskRemover->removeTaskFromId(new Task\ValueObject\Id("task_5b98f476315cc"));
 
 $taskBrowser = new Browser($taskRepository);
 
-var_dump($taskBrowser->getAllTasks());
+$tasks = $taskBrowser->getAllTasks();
 
-//$browseTask = new BrowseTask($taskRepository);
-//
-//
-//foreach($browseTask->browseTaskList() as $task)
-//{
-//	echo $task->getUuid() . " - " . $task->getName() . PHP_EOL;
-//}
+foreach($tasks as $task)
+{
+	echo "(" . $task->getId() . ") " . $task->getName() . PHP_EOL;
+}

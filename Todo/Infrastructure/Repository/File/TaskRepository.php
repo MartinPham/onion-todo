@@ -19,6 +19,7 @@ use function json_encode;
 use Todo\Domain\Task;
 use Todo\Domain\Task\Service\Repository;
 use Todo\Domain\Task\ValueObject\Id;
+use function var_dump;
 
 /**
  * Class TaskRepository
@@ -46,26 +47,59 @@ class TaskRepository implements Repository
 	 */
 	public function __construct()
 	{
-		if(!file_exists(__DIR__ . '/task.json'))
+		if(!file_exists($this->filePath))
 		{
-			file_put_contents(__DIR__ . '/task.json', json_encode([]));
+			file_put_contents($this->filePath, json_encode([]));
 		}
 
-		$data = (string)file_get_contents(__DIR__ . '/task.json');
+	}
+	
+	/** @var string  */
+	private $filePath = __DIR__ . '/task.json';
+
+	/**
+	 * _readFromFile
+	 * @return void
+	 * @throws Task\Exception\InvalidNameException
+	 */
+	private function _readFromFile()
+	{
+		$data = (string)file_get_contents($this->filePath);
 		$jsonData = json_decode($data);
-		
+
 		$this->data = [];
 		foreach($jsonData as $taskJsonData)
-		{			
+		{
 			$task = Task::fromData(new Task\ValueObject\Name($taskJsonData->name), new Id($taskJsonData->id));
-			
+
 			$this->data[] = $task;
 		}
+	}
+
+	/**
+	 * _writeToFile
+	 * @return void
+	 */
+	private function _writeToFile()
+	{
+
+		$jsonData = [];
+		foreach($this->data as $task)
+		{
+			$jsonData[] = [
+				'id' => (string)$task->getId(),
+				'name' => (string)$task->getName()
+			];
+		}
+
+		file_put_contents($this->filePath, json_encode($jsonData));
 	}
 
 
 	public function find(Task\ValueObject\Id $id): Task
 	{
+		$this->_readFromFile();
+		
 		/** @var Task $task */
 		foreach($this->data as &$task)
 		{
@@ -75,11 +109,14 @@ class TaskRepository implements Repository
 			}
 		}
 
-		throw new Task\Exception\TaskNotFoundException("");
+		throw new Task\Exception\TaskNotFoundException("Task from id " . $id . " not found");
 	}
 
 	public function findByName(Task\ValueObject\Name $name): Task
 	{
+
+		$this->_readFromFile();
+		
 		/** @var Task $task */
 		foreach($this->data as &$task)
 		{
@@ -89,7 +126,7 @@ class TaskRepository implements Repository
 			}
 		}
 
-		throw new Task\Exception\TaskNotFoundException("");
+		throw new Task\Exception\TaskNotFoundException("Task from name " . $name . " not found");
 	}
 
 	public function findAll(): array
@@ -100,6 +137,9 @@ class TaskRepository implements Repository
 
 	public function save(Task $task)
 	{
+
+		$this->_readFromFile();
+		
 		$matchedTask = null;
 
 		try {
@@ -136,26 +176,21 @@ class TaskRepository implements Repository
 			$this->data[] = $task;
 		}
 		
-		
-		$jsonData = [];
-		foreach($this->data as $task)
-		{
-			$jsonData[] = [
-				'id' => (string)$task->getId(),
-				'name' => (string)$task->getName()
-			];
-		}
-		
-		file_put_contents(__DIR__ . '/task.json', json_encode($jsonData));
+		$this->_writeToFile();
 	}
 
 	public function remove(Task $task)
 	{
+
+		$this->_readFromFile();
+		
 		foreach($this->data as $taskKey => $taskItem)
 		{
 			if($taskItem->equals($task))
 			{
 				array_splice($this->data, $taskKey, 1);
+
+				$this->_writeToFile();
 				return;
 			}
 		}

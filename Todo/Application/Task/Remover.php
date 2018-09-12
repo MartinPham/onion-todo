@@ -13,6 +13,7 @@ namespace Todo\Application\Task;
 
 use Todo\Domain\Task\Service\Repository;
 use Todo\Domain\Task\ValueObject\Id;
+use function var_dump;
 
 /**
  * Class Remover
@@ -54,6 +55,7 @@ class Remover
 	public function removeTaskFromId(Id $id)
 	{
 		$task = $this->taskRepository->find($id);
+		
 		
 		$this->taskRepository->remove($task);
 	}

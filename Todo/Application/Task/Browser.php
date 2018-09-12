@@ -42,7 +42,11 @@ class Browser
 	{
 		$this->taskRepository = $taskRepository;
 	}
-	
+
+	/**
+	 * GetAllTasks
+	 * @return \Todo\Domain\Task[]
+	 */
 	public function getAllTasks()
 	{
 		return $this->taskRepository->findAll();
