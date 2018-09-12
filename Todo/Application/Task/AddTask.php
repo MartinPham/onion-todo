@@ -16,7 +16,7 @@ use Todo\Application\Exception\ImpoliteNameException;
 use Todo\Domain\Entity\Task;
 use Todo\Domain\Exception\Task\InvalidNameException;
 use Todo\Domain\Service\Repository\TaskRepositoryInterface;
-use Todo\Domain\Task\Exception\DuplicatedTaskName;
+use Todo\Domain\Task\Exception\DuplicateTaskException;
 use Todo\Domain\Task\Service\Factory\FromName;
 use Todo\Domain\Task\Service\Repository;
 use Todo\Domain\Task\ValueObject\Name;
@@ -56,8 +56,8 @@ class AddTask
 	 * AddTaskWithName
 	 * @param string $name
 	 * @return void
-	 * @throws \Todo\Domain\Task\Exception\InvalidTaskName
-	 * @throws DuplicatedTaskName
+	 * @throws \Todo\Domain\Task\Exception\InvalidNameException
+	 * @throws DuplicateTaskException
 	 */
 	public function addTaskWithName(string $name)
 	{

@@ -4,8 +4,8 @@ namespace Todo\Application\Task;
 
 
 
-use Todo\Domain\Task\Exception\InvalidTaskName;
-use Todo\Domain\Task\Exception\TaskNotFound;
+use Todo\Domain\Task\Exception\InvalidNameException;
+use Todo\Domain\Task\Exception\TaskNotFoundException;
 use Todo\Domain\Task\Service\Factory\FromName;
 use Todo\Domain\Task\Service\Repository;
 use Todo\Domain\Task\Service\Validation\NameIsUnique;
@@ -34,7 +34,7 @@ class AddTaskTest extends \Codeception\Test\Unit
 			[
 				'findByName' => function ()
 				{
-					throw new TaskNotFound("");
+					throw new TaskNotFoundException("");
 				}
 			]
 		);
@@ -56,7 +56,7 @@ class AddTaskTest extends \Codeception\Test\Unit
 			[
 				'findByName' => function ()
 				{
-					throw new TaskNotFound("");
+					throw new TaskNotFoundException("");
 				}
 			]
 		);
@@ -66,11 +66,11 @@ class AddTaskTest extends \Codeception\Test\Unit
 		$addTask = new AddTask($taskRepository);
 
 		
-    	$this->tester->expectException(InvalidTaskName::class, function() use ($addTask){
+    	$this->tester->expectException(InvalidNameException::class, function() use ($addTask){
 			$addTask->addTaskWithName("");
 		});
 		
-    	$this->tester->expectException(InvalidTaskName::class, function() use ($addTask){
+    	$this->tester->expectException(InvalidNameException::class, function() use ($addTask){
 			$addTask->addTaskWithName("oh fuck");
 		});
 		

@@ -46,19 +46,14 @@ class Id
 		$this->id = $id;
 	}
 
-	/**
-	 * Get Id
-	 *
-	 * @return string
-	 */
-	public function getId(): string
+	public function __toString()
 	{
 		return $this->id;
 	}
 
-	
-
-
-	
+	public function equals(Id $id)
+	{
+		return (string)$id === $this->id;
+	}
 
 }

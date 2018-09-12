@@ -29,23 +29,23 @@ interface Repository
 	 * Find
 	 * @param $id
 	 * @return Task
-	 * @throws Task\Exception\TaskNotFound
+	 * @throws Task\Exception\TaskNotFoundException
 	 */
-	public function find($id): Task;
+	public function find(Id $id): Task;
 
 	/**
 	 * FindByName
 	 * @param $name
 	 * @return Task
-	 * @throws Task\Exception\TaskNotFound
+	 * @throws Task\Exception\TaskNotFoundException
 	 */
-	public function findByName($name): Task;
+	public function findByName(Task\ValueObject\Name $name): Task;
 
 	/**
 	 * Save
 	 * @param Task $task
 	 * @return mixed
-	 * @throws Task\Exception\DuplicatedTaskName
+	 * @throws Task\Exception\DuplicateTaskException
 	 */
 	public function save(Task $task);
 }

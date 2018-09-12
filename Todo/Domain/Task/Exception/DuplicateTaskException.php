@@ -1,6 +1,6 @@
 <?php
 /**
- * File: DuplicatedTaskName.php - todo
+ * File: DuplicateTaskExceptiontion.php - todo
  *
  * @category None
  * @package  Todo
@@ -12,7 +12,7 @@
 namespace Todo\Domain\Task\Exception;
 
 /**
- * Class DuplicatedTaskName
+ * Class DuplicateTaskException
  *
  * @category None
  * @package  Todo\Domain\Task\Exception
@@ -20,7 +20,7 @@ namespace Todo\Domain\Task\Exception;
  * @license  None http://
  * @link     None
  */
-class DuplicatedTaskName extends \Exception
+class DuplicateTaskException extends \Exception
 {
 
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * File: NameIsPolite.php - todo
+ * File: IsPolite.php - todo
  *
  * @category None
  * @package  Todo
@@ -9,14 +9,14 @@
  * @link     None
  */
 
-namespace Todo\Domain\Task\Service\Validation;
+namespace Todo\Domain\Task\Service\Validation\Name;
 
 use function is_numeric;
 use function strpos;
-use Todo\Domain\Task\Service\Validation\Specification\NameSpecification;
+use Todo\Domain\Task\Service\Validation\Name\Specification;
 
 /**
- * Class NameIsPolite
+ * Class IsPolite
  *
  * @category None
  * @package  Todo\Domain\Task\Service\Validation
@@ -24,7 +24,7 @@ use Todo\Domain\Task\Service\Validation\Specification\NameSpecification;
  * @license  None http://
  * @link     None
  */
-class NameIsPolite implements NameSpecification
+class IsPolite implements Specification
 {
 	public function isSatisfiedBy(string $name): bool
 	{

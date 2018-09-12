@@ -1,6 +1,6 @@
 <?php
 /**
- * File: TaskNotFound.php - todo
+ * File: InvalidNameException.phpn.php - todo
  *
  * @category None
  * @package  Todo
@@ -12,7 +12,7 @@
 namespace Todo\Domain\Task\Exception;
 
 /**
- * Class TaskNotFound
+ * Class InvalidNameException
  *
  * @category None
  * @package  Todo\Domain\Task\Exception
@@ -20,7 +20,7 @@ namespace Todo\Domain\Task\Exception;
  * @license  None http://
  * @link     None
  */
-class TaskNotFound extends \Exception
+class InvalidNameException extends \Exception
 {
 
 }

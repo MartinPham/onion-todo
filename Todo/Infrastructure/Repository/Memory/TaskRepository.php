@@ -39,32 +39,32 @@ class TaskRepository implements Task\Service\Repository
 		}
 	}
 
-	public function find($id): Task
+	public function find(Task\ValueObject\Id $id): Task
 	{
 		/** @var Task $task */
 		foreach($GLOBALS['tasks'] as $task)
 		{
-			if($task->getId()->getId() === $id)
+			if($task->getId()->equals($id))
 			{
 				return $task;
 			}
 		}
 		
-		throw new Task\Exception\TaskNotFound("");
+		throw new Task\Exception\TaskNotFoundException("");
 	}
 
-	public function findByName($name): Task
+	public function findByName(Task\ValueObject\Name $name): Task
 	{
 		/** @var Task $task */
 		foreach($GLOBALS['tasks'] as $task)
 		{
-			if($task->getName()->getName() === $name)
+			if($task->getName()->equals($name))
 			{
 				return $task;
 			}
 		}
 
-		throw new Task\Exception\TaskNotFound("");
+		throw new Task\Exception\TaskNotFoundException("");
 	}
 
 
@@ -73,20 +73,20 @@ class TaskRepository implements Task\Service\Repository
 		$taskNameIsAlreadyUsed = false;
 		
 		try {
-			$existedTaskWithSameName = $this->findByName($task->getName()->getName());
+			$existedTaskWithSameName = $this->findByName($task->getName());
 			
 			if($existedTaskWithSameName->getId() !== $task->getId())
 			{
 				$taskNameIsAlreadyUsed = true;
 			}
-		} catch (Task\Exception\TaskNotFound $exception)
+		} catch (Task\Exception\TaskNotFoundException $exception)
 		{
 			
 		}
 		
 		if($taskNameIsAlreadyUsed)
 		{
-			throw new Task\Exception\DuplicatedTaskName("Task name " . $task->getName()->getName() . " is already used");
+			throw new Task\Exception\DuplicateTaskException("Task name " . $task->getName() . " is already used");
 		}
 		
 		$GLOBALS['tasks'][] = $task;

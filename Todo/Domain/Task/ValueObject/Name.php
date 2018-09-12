@@ -11,9 +11,7 @@
 
 namespace Todo\Domain\Task\ValueObject;
 
-use Todo\Domain\Task\Exception\InvalidTaskName;
-use Todo\Domain\Task\Service\Validation\NameIsNonEmptyString;
-use Todo\Domain\Task\Service\Validation\NameIsPolite;
+use Todo\Domain\Task\Exception\InvalidNameException;
 
 /**
  * Class Name
@@ -38,34 +36,33 @@ class Name
 	 *
 	 * @param string $name
 	 *
-	 * @throws InvalidTaskName
+	 * @throws InvalidNameException
 	 */
 	public function __construct(string $name)
 	{
-		$nameIsNonEmptyString = new NameIsNonEmptyString();
+		$nameIsNonEmptyString = new \Todo\Domain\Task\Service\Validation\Name\IsNonEmptyString();
 		if(!$nameIsNonEmptyString->isSatisfiedBy($name))
 		{
-			throw new InvalidTaskName("Name must be non empty string");
+			throw new InvalidNameException("Name must be non empty string");
 		}
 		
-		$nameIsPolite = new NameIsPolite();
+		$nameIsPolite = new \Todo\Domain\Task\Service\Validation\Name\IsPolite();
 		if(!$nameIsPolite->isSatisfiedBy($name))
 		{
-			throw new InvalidTaskName("Task name is very impolite");
+			throw new InvalidNameException("Task name is very impolite");
 		}
 		
 		$this->name = $name;
 	}
 
-	/**
-	 * Get Name
-	 *
-	 * @return string
-	 */
-	public function getName(): string
+	public function __toString()
 	{
 		return $this->name;
 	}
 
 
+	public function equals(Name $name)
+	{
+		return (string)$name === $this->name;
+	}
 }

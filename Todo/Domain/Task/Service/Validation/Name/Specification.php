@@ -1,6 +1,6 @@
 <?php
 /**
- * File: NameSpecification.php - todo
+ * File: Specification.phpodo
  *
  * @category None
  * @package  Todo
@@ -9,12 +9,12 @@
  * @link     None
  */
 
-namespace Todo\Domain\Task\Service\Validation\Specification;
+namespace Todo\Domain\Task\Service\Validation\Name;
 
 use Todo\Domain\Task\ValueObject\Name;
 
 /**
- * Interface NameSpecification
+ * Interface Specification
  *
  * @category None
  * @package  Todo\Domain\Task\Service\Validation\Specification
@@ -22,7 +22,7 @@ use Todo\Domain\Task\ValueObject\Name;
  * @license  None http://
  * @link     None
  */
-interface NameSpecification
+interface Specification
 {
 	public function isSatisfiedBy(string $name): bool;
 }

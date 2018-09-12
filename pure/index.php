@@ -1,9 +1,6 @@
 <?php
 
 use Todo\Application\Task\AddTask;
-use Todo\Application\Task\BrowseTask;
-use Todo\Domain\Task\Service\Factory\FromName;
-use Todo\Domain\Task\Service\Validation\NameIsUnique;
 use Todo\Infrastructure\Repository\Memory\TaskRepository;
 
 require __DIR__ . '/../vendor/autoload.php';
