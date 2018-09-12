@@ -89,9 +89,9 @@ class Task
 	}
 
 	
-	public static function constructFromName(Name $name)
+	public static function fromName(Name $name)
 	{
-		return self::constructFromData($name);
+		return self::fromData($name);
 	}
 
 	/**
@@ -100,10 +100,10 @@ class Task
 	 * @param Name $name
 	 * @return Task
 	 */
-	public static function constructFromData(Name $name, ?Id $id = null)
+	public static function fromData(Name $name, ?Id $id = null)
 	{
 		$task = new self($id);
-		$task->setName($name);
+		$task->setName($name);	
 		
 		return $task;
 	}

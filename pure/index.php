@@ -13,12 +13,12 @@ $taskRepository = new TaskRepository();
 $addTask = new AddTask($taskRepository);
 
 //$addTask->addTaskWithName('');
-//$addTask->addTaskWithName('fuck');
+$addTask->addTaskWithName('fuczk');
 //$addTask->addTaskWithName('hooozk');
 //$addTask->addTaskWithName('omggg');
 //$addTask->addTaskWithName('hooo');
 
-$task = Task::constructFromData(
+$task = Task::fromData(
 	new Task\ValueObject\Name("hooozkaaa"),
 	new Task\ValueObject\Id("task_5b98f476315cc")
 );

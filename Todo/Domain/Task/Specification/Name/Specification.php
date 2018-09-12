@@ -9,9 +9,8 @@
  * @link     None
  */
 
-namespace Todo\Domain\Task\Service\Validation\Name;
+namespace Todo\Domain\Task\Specification\Name;
 
-use Todo\Domain\Task\ValueObject\Name;
 
 /**
  * Interface Specification

@@ -1,6 +1,6 @@
 <?php
 /**
- * File: IsNonEmptyString.php - todo
+ * File: NonEmptyString.php todo
  *
  * @category None
  * @package  Todo
@@ -9,14 +9,14 @@
  * @link     None
  */
 
-namespace Todo\Domain\Task\Service\Validation\Name;
+namespace Todo\Domain\Task\Specification\Name;
 
 use function is_string;
-use Todo\Domain\Task\Service\Validation\Name\Specification;
+use Todo\Domain\Task\Specification\Name\Specification;
 
 
 /**
- * Class IsNonEmptyString
+ * Class NonEmptyString
  *
  * @category None
  * @package  Todo\Domain\Task\Service\Validation
@@ -24,14 +24,7 @@ use Todo\Domain\Task\Service\Validation\Name\Specification;
  * @license  None http://
  * @link     None
  */
-class IsNonEmptyString implements Specification
+class NonEmptyString extends \Todo\Domain\Specification\NonEmptyString implements Specification
 {
-	public function isSatisfiedBy(string $name): bool
-	{
-		return (
-			is_string($name)
-			&& !empty($name)
-		);
-	}
 
 }

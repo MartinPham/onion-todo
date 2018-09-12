@@ -63,7 +63,7 @@ class AddTask
 	{
 		$nameObject = new Name($name);
 		
-		$task = \Todo\Domain\Task::constructFromName($nameObject);
+		$task = \Todo\Domain\Task::fromName($nameObject);
 		
 		
 		$this->taskRepository->save($task);

@@ -1,6 +1,6 @@
 <?php
 /**
- * File: IsPolite.php - todo
+ * File: Politehp - todo
  *
  * @category None
  * @package  Todo
@@ -9,14 +9,14 @@
  * @link     None
  */
 
-namespace Todo\Domain\Task\Service\Validation\Name;
+namespace Todo\Domain\Task\Specification\Name;
 
 use function is_numeric;
 use function strpos;
-use Todo\Domain\Task\Service\Validation\Name\Specification;
+use Todo\Domain\Task\Specification\Name\Specification;
 
 /**
- * Class IsPolite
+ * Class Polite
  *
  * @category None
  * @package  Todo\Domain\Task\Service\Validation
@@ -24,7 +24,7 @@ use Todo\Domain\Task\Service\Validation\Name\Specification;
  * @license  None http://
  * @link     None
  */
-class IsPolite implements Specification
+class Polite implements Specification
 {
 	public function isSatisfiedBy(string $name): bool
 	{

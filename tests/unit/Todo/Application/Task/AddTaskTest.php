@@ -87,7 +87,7 @@ class AddTaskTest extends \Codeception\Test\Unit
 			[
 				'findByName' => function () use ($name)
 				{
-					return Task::constructFromName(new Task\ValueObject\Name($name));
+					return Task::fromName(new Task\ValueObject\Name($name));
 				}
 			]
 		);

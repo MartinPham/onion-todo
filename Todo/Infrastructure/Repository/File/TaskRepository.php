@@ -56,7 +56,7 @@ class TaskRepository implements Repository
 		$this->data = [];
 		foreach($jsonData as $taskJsonData)
 		{			
-			$task = Task::constructFromData(new Task\ValueObject\Name($taskJsonData->name), new Id($taskJsonData->id));
+			$task = Task::fromData(new Task\ValueObject\Name($taskJsonData->name), new Id($taskJsonData->id));
 			
 			$this->data[] = $task;
 		}

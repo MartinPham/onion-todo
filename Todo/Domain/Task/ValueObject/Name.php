@@ -40,14 +40,14 @@ class Name
 	 */
 	public function __construct(string $name)
 	{
-		$nameIsNonEmptyString = new \Todo\Domain\Task\Service\Validation\Name\IsNonEmptyString();
-		if(!$nameIsNonEmptyString->isSatisfiedBy($name))
+		$nonEmptyStringSpecification = new \Todo\Domain\Task\Specification\Name\NonEmptyString();
+		if(!$nonEmptyStringSpecification->isSatisfiedBy($name))
 		{
 			throw new InvalidNameException("Name must be non empty string");
 		}
 		
-		$nameIsPolite = new \Todo\Domain\Task\Service\Validation\Name\IsPolite();
-		if(!$nameIsPolite->isSatisfiedBy($name))
+		$politeSpecification = new \Todo\Domain\Task\Specification\Name\Polite();
+		if(!$politeSpecification->isSatisfiedBy($name))
 		{
 			throw new InvalidNameException("Task name is very impolite");
 		}
