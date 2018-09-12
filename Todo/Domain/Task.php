@@ -11,6 +11,7 @@
 
 namespace Todo\Domain;
 
+use Todo\Domain\Task\TaskData;
 use Todo\Domain\Task\ValueObject\Id;
 use Todo\Domain\Task\ValueObject\Name;
 
@@ -42,11 +43,17 @@ class Task
 	/**
 	 * Task constructor
 	 *
+	 * @param null|Id $id
 	 * 
 	 */
-	private function __construct()
+	private function __construct(?Id $id = null)
 	{
-		$this->id = new Id();
+		if($id !== null)
+		{
+			$this->id = $id;
+		} else {
+			$this->id = new Id();
+		}
 	}
 
 	/**
@@ -84,7 +91,18 @@ class Task
 	
 	public static function constructFromName(Name $name)
 	{
-		$task = new self();
+		return self::constructFromData($name);
+	}
+
+	/**
+	 * ConstructFromData
+	 * @param null|Id $id
+	 * @param Name $name
+	 * @return Task
+	 */
+	public static function constructFromData(Name $name, ?Id $id = null)
+	{
+		$task = new self($id);
 		$task->setName($name);
 		
 		return $task;

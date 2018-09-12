@@ -65,6 +65,7 @@ class AddTask
 		
 		$task = \Todo\Domain\Task::constructFromName($nameObject);
 		
+		
 		$this->taskRepository->save($task);
 	}
 
